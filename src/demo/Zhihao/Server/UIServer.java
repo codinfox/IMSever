@@ -33,8 +33,8 @@ import javax.swing.SwingConstants;
  */
 class UIServer extends JFrame {
 	private ChatServer server = null;
-	DefaultListModel<String> memberModel = null;
-	JList<String> memberList = null;
+	private DefaultListModel<String> memberModel = null;
+	private JList<String> memberList = null;
 
 	/**
 	 * Creates and init the server GUI.
