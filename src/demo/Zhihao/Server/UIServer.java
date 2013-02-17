@@ -26,11 +26,23 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class UIServer extends JFrame {
+/**
+ * The GUI part of the IMServer project.<br>
+ * @author ben
+ *
+ */
+class UIServer extends JFrame {
 	private ChatServer server = null;
 	DefaultListModel<String> memberModel = null;
 	JList<String> memberList = null;
 
+	/**
+	 * Creates and init the server GUI.
+	 * @param server the model of this view.
+	 * @param ip the local IP address. 
+	 * @param tcpPort the local TCP port.
+	 * @param udpPort the lcoal UDP port.
+	 */
 	public UIServer(ChatServer server, String ip, int tcpPort, int udpPort) {
 		super("Chatroom Control Panel");
 
@@ -53,15 +65,26 @@ public class UIServer extends JFrame {
 		});
 	}
 
+	/**
+	 * Adds a new clinet to the list.
+	 * @param name the new client's name.
+	 */
 	public void addClient(String name) {
 		memberModel.addElement(name);
 	}
 
+	/**
+	 * Removes a client from the list.
+	 * @param name the client's name.
+	 */
 	private void removeClient(String name) {
 		server.forceQuit(name);
 		memberModel.removeElement(name);
 	}
 
+	/**
+	 * Terminate the thread and quit.
+	 */
 	private void terminate() {
 		server.close();
 		System.exit(0);
